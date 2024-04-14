@@ -43,7 +43,7 @@ def save_message(member_name, content, date_time):
 async def daily_task():
     tempo = datetime.now().time().strftime('%H:%M')
     print(tempo)
-    if tempo == '12:14':
+    if tempo == '12:20':
         guild = client.get_guild(1212192505240485898)
         member = discord.utils.get(guild.members, name="dark_player16.")
         channel = client.get_channel(1228673076888080414)
