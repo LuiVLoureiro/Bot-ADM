@@ -39,7 +39,7 @@ def save_message(member_name, content, date_time):
         json.dump(data, f)
         f.write('\n')
 
-@tasks.loop(seconds=10)
+@client.event
 async def daily_task():
     tempo = datetime.now().time().strftime('%H:%M')
     print(tempo)
@@ -117,7 +117,8 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user.name}')
-    daily_task.start() 
+    while True:
+        daily_task()
 
 
 tempo = datetime.now().time().strftime('%H:%M')
