@@ -66,7 +66,6 @@ async def daily_task():
                 save_initial_message(member.display_name, "None", datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
         else:
             await channel.send("Membro não encontrado.")
-        await asyncio.sleep(60)
 
     elif tempo == '11:45':
         guild = client.get_guild(1212192505240485898)
@@ -91,7 +90,6 @@ async def daily_task():
                 save_message(member.display_name, "None", str(datetime.now()))
         else:
             await channel.send("Membro não encontrado.")
-        await asyncio.sleep(60)
         
         
     
