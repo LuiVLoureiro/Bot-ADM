@@ -50,11 +50,11 @@ async def schedule_tasks():
 
 async def handle_task(time_str):
     guild = client.get_guild(1212192505240485898)
-    member = discord.utils.get(guild.members, name="dark_player16.")
+    member = discord.utils.get(guild.members, name="luiloure1ro")
     channel = client.get_channel(1228673076888080414)
     if member:
         message_prompt = {
-            '13:24': 'Por Favor, apenas confirme sua frequência inicial',
+            '13:30': 'Por Favor, apenas confirme sua frequência inicial',
             '11:45': 'Por Favor, confirme sua frequência final e descreva abaixo o que fez no dia. [Você tem 5 Minutos]'
         }.get(time_str, 'Undefined task time.')
         
