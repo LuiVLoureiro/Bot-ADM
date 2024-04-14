@@ -7,6 +7,8 @@ import asyncio
 import json
 import os
 
+print('TESTE')
+
 intents = discord.Intents.default()
 intents.message_content = True
 intents.messages = True
@@ -70,7 +72,7 @@ async def daily_task():
             await channel.send("Membro não encontrado.")
         await asyncio.sleep(60)
 
-    elif tempo == '10:48':
+    elif tempo == '11:':
         guild = client.get_guild(1212192505240485898)
         member = discord.utils.get(guild.members, name="dark_player16.")
         channel = client.get_channel(1228673076888080414)
@@ -114,5 +116,9 @@ async def on_message(message):
 async def on_ready():
     print(f'Logged in as {client.user.name}')
     daily_task.start() 
+
+
+tempo = datetime.now().time().strftime('%H:%M')
+print(tempo)
 
 client.run(os.getenv('TOKEN_DISCORD'))
