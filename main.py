@@ -5,6 +5,19 @@ import asyncio
 import json
 import os
 import pytz
+from aiohttp import web
+
+async def start_webserver():
+    app = web.Application()
+    app.router.add_get("/", lambda request: web.Response(text="Bot is alive!"))
+    
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', 8080)
+    await site.start()
+
+# No seu on_ready:
+asyncio.create_task(start_webserver())
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -35,14 +48,6 @@ def save_message(member_name, content, date_time):
     with open('frequencia.json', 'a', encoding='utf-8') as f:
         json.dump(data, f)
         f.write('\n')
-
-# Função que executa uma ação simples periodicamente
-@tasks.loop(minutes=5)  # Configura para rodar a cada 5 minutos
-async def keep_alive_task():
-    print("Keeping the bot alive at", datetime.now())
-    # Aqui você pode adicionar qualquer ação simples, como uma operação de I/O
-    with open("keep_alive.txt", "a") as f:
-        f.write(f"Check-in at {datetime.now()}\n")
 
 
 async def schedule_tasks():
@@ -96,6 +101,5 @@ async def on_message(message):
 async def on_ready():
     print(f'Logged in as {client.user.name}')
     asyncio.create_task(schedule_tasks())
-    keep_alive_task.start()  
 
 client.run(os.getenv('TOKEN_DISCORD'))
