@@ -43,7 +43,7 @@ def save_message(member_name, content, date_time):
 async def daily_task():
     tempo = datetime.now().time().strftime('%H:%M')
     print(tempo)
-    if tempo == '18:00':
+    if tempo == '12:01':
         guild = client.get_guild(1212192505240485898)
         member = discord.utils.get(guild.members, name="dark_player16.")
         channel = client.get_channel(1228673076888080414)
@@ -103,6 +103,14 @@ async def on_message(message):
         except Exception as e:
             # Envie uma mensagem de erro se o arquivo não puder ser enviado
             await message.channel.send(f"Erro ao enviar o arquivo: {e}")
+
+@client.event
+async def on_message(message):
+    if message.content.startswith('!init'):
+        try:
+            daily_task.start()
+        except Exception as e:
+            await message.channel.send(f"Erro ao começar a task")
         
         
 
