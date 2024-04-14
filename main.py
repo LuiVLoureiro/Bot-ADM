@@ -124,4 +124,4 @@ async def on_ready():
 tempo = datetime.now().time().strftime('%H:%M')
 print(tempo)
 
-client.run(os.getenv('TOKEN_DISCORD'))
+client.run(os.getenv('TOKEN_DISCORDasd'))
