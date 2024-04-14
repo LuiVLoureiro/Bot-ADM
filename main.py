@@ -42,9 +42,9 @@ async def schedule_tasks():
         timezone = pytz.timezone('America/Belem')
         now = datetime.now(timezone).strftime('%H:%M')
         print(now)
-        if now == '13:24':
+        if now == '18:00':
             await handle_task('13:24')
-        elif now == '11:45':
+        elif now == '21:30':
             await handle_task('11:45')
         await asyncio.sleep(10)  # Sleep for 10 seconds before checking again
 
@@ -54,8 +54,8 @@ async def handle_task(time_str):
     channel = client.get_channel(1228673076888080414)
     if member:
         message_prompt = {
-            '13:30': 'Por Favor, apenas confirme sua frequência inicial',
-            '11:45': 'Por Favor, confirme sua frequência final e descreva abaixo o que fez no dia. [Você tem 5 Minutos]'
+            '18:00': 'Por Favor, apenas confirme sua frequência inicial',
+            '21:30': 'Por Favor, confirme sua frequência final e descreva abaixo o que fez no dia. [Você tem 5 Minutos]'
         }.get(time_str, 'Undefined task time.')
         
         await channel.send(f'{member.mention} {message_prompt}')
