@@ -50,7 +50,7 @@ async def schedule_tasks():
 
 async def handle_task(time_str):
     guild = client.get_guild(1212192505240485898)
-    member = discord.utils.get(guild.members, name="luiloure1ro")
+    member = discord.utils.get(guild.members, name="dark_player16.")
     channel = client.get_channel(1228673076888080414)
     if member:
         message_prompt = {
