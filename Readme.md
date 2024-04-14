@@ -1,0 +1,1 @@
+Bot do Discord para Administrar Frequência
