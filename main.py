@@ -39,11 +39,11 @@ def save_message(member_name, content, date_time):
         json.dump(data, f)
         f.write('\n')
 
-@client.event
+@tasks.loop(seconds=10)
 async def daily_task():
     tempo = datetime.now().time().strftime('%H:%M')
     print(tempo)
-    if tempo == '12:01':
+    if tempo == '12:14':
         guild = client.get_guild(1212192505240485898)
         member = discord.utils.get(guild.members, name="dark_player16.")
         channel = client.get_channel(1228673076888080414)
@@ -117,11 +117,10 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user.name}')
-    while True:
-        daily_task()
+    daily_task.start() 
 
 
 tempo = datetime.now().time().strftime('%H:%M')
 print(tempo)
 
-client.run(os.getenv('TOKEN_DISCORDasd'))
+client.run(os.getenv('TOKEN_DISCORD'))
