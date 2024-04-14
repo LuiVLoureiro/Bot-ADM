@@ -69,7 +69,7 @@ async def daily_task():
             await channel.send("Membro não encontrado.")
         await asyncio.sleep(60)
 
-    elif tempo == '10:28':
+    elif tempo == '10:30':
         guild = client.get_guild(1212192505240485898)
         member = discord.utils.get(guild.members, name="dark_player16.")
         channel = client.get_channel(1228673076888080414)
