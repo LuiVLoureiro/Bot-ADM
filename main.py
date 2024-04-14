@@ -39,8 +39,8 @@ async def schedule_tasks():
     await client.wait_until_ready()
     while not client.is_closed():
         now = datetime.now().strftime('%H:%M')
-        if now == '12:58':
-            await handle_task('13:03')
+        if now == '13:10':
+            await handle_task('13:10')
         elif now == '11:45':
             await handle_task('11:45')
         await asyncio.sleep(10)  # Sleep for 10 seconds before checking again
@@ -51,7 +51,7 @@ async def handle_task(time_str):
     channel = client.get_channel(1228673076888080414)
     if member:
         message_prompt = {
-            '12:58': 'Por Favor, apenas confirme sua frequência inicial',
+            '13:10': 'Por Favor, apenas confirme sua frequência inicial',
             '11:45': 'Por Favor, confirme sua frequência final e descreva abaixo o que fez no dia. [Você tem 5 Minutos]'
         }.get(time_str, 'Undefined task time.')
         
