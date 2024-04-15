@@ -5,19 +5,7 @@ import asyncio
 import json
 import os
 import pytz
-from aiohttp import web
-
-async def start_webserver():
-    app = web.Application()
-    app.router.add_get("/", lambda request: web.Response(text="Bot is alive!"))
-    
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, '0.0.0.0', 8080)
-    await site.start()
-
-# No seu on_ready:
-asyncio.create_task(start_webserver())
+import requests
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -51,6 +39,7 @@ def save_message(member_name, content, date_time):
 
 
 async def schedule_tasks():
+    requests.get('www.google.com.br')
     await client.wait_until_ready()
     while not client.is_closed():
         timezone = pytz.timezone('America/Belem')
