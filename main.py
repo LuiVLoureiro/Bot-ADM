@@ -39,7 +39,7 @@ def save_message(member_name, content, date_time):
 
 
 async def schedule_tasks():
-    requests.get('www.google.com.br')
+    requests.get('https://www.google.com.br?')
     await client.wait_until_ready()
     while not client.is_closed():
         timezone = pytz.timezone('America/Belem')
